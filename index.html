@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AlbumArt — Albume personalizate</title>
+<style>
+:root{--green:#12392e;--cream:#f5efe7;--brown:#9a7048;--ink:#171a18;--white:#fff;--line:#ddd3c8}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:#fbfaf8}
+a{text-decoration:none;color:inherit}.top{background:var(--green);color:#fff;padding:10px 5%;display:flex;justify-content:space-between;font-size:13px}
+nav{height:74px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 5%;border-bottom:1px solid #eee;position:sticky;top:0;z-index:10}
+.logo{font-family:Georgia,serif;font-size:30px;font-style:italic}.logo small{display:block;font:9px Arial;letter-spacing:3px;text-align:center;margin-top:-4px}
+.links{display:flex;gap:30px;font-size:14px}.navbtn{border:0;background:none;font-size:20px;cursor:pointer}
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:480px;background:var(--cream)}
+.heroText{padding:75px 8%}.eyebrow{letter-spacing:2px;text-transform:uppercase;font-size:12px;color:var(--brown)}
+h1{font:54px Georgia,serif;line-height:1.05;margin:15px 0}.hero p{font-size:18px;line-height:1.6;max-width:500px}
+.btn{display:inline-block;padding:14px 22px;border-radius:6px;border:1px solid var(--green);font-weight:700;font-size:13px;cursor:pointer}
+.primary{background:var(--green);color:#fff}.secondary{margin-left:10px;background:#fff}
+.heroImg{background:url('mockup.png') center/cover;min-height:480px}
+.steps{margin:-35px auto 50px;position:relative;width:90%;background:#fff;border-radius:12px;padding:24px;box-shadow:0 10px 35px #00000010;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;text-align:center}
+.step b{display:block;margin-top:8px;font-size:14px}.step span{font-size:25px}
+section{padding:35px 5%}.sectionHead{display:flex;justify-content:space-between;align-items:end}.sectionHead h2{font:36px Georgia,serif;margin:0 0 20px}
+.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}.card{background:#fff;border:1px solid #eee;border-radius:10px;overflow:hidden}.card .pic{height:180px;background:var(--cream);display:flex;align-items:center;justify-content:center;font:24px Georgia,serif;color:#795c40}.card .info{padding:16px}.card h3{margin:0 0 8px;font:20px Georgia,serif}.price{color:var(--brown);font-weight:700}
+.config{background:#f2ede6;border-radius:14px;padding:30px}.configGrid{display:grid;grid-template-columns:1fr 1.6fr .8fr;gap:20px}.panel{background:#fff;border-radius:10px;padding:22px}.panel h3{margin-top:0;font:24px Georgia,serif}.option{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}select,input{padding:10px;border:1px solid #ccc;border-radius:6px;width:100%;margin-top:6px}.preview{background:#e6ded4;min-height:330px;display:flex;align-items:center;justify-content:center;border-radius:8px}.album{width:280px;height:220px;background:#d6c5ad;box-shadow:0 15px 30px #0003;border-radius:6px;transform:rotate(-3deg);display:flex;align-items:center;justify-content:center;text-align:center;font:28px Georgia,serif;color:#684e36;padding:25px}.total{font-size:34px;font-weight:800;margin:15px 0}.trust{background:var(--green);color:#fff;border-radius:12px;display:grid;grid-template-columns:repeat(4,1fr);padding:25px;margin-top:30px}.trust div{padding:5px 25px;border-right:1px solid #ffffff30}.trust div:last-child{border:0}.cta{margin-top:35px;background:var(--cream);padding:50px;border-radius:12px;text-align:center}.cta h2{font:40px Georgia,serif;margin:0 0 12px}
+footer{background:#fff;border-top:1px solid #eee;padding:40px 5%;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}.footerTitle{font:25px Georgia,serif;font-style:italic}.cart{position:relative}.badge{position:absolute;top:-5px;right:-8px;background:var(--green);color:#fff;font:10px Arial;border-radius:50%;padding:3px 6px}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:30;align-items:center;justify-content:center}.modalBox{background:#fff;border-radius:12px;padding:28px;width:min(520px,90%)}.modalBox h2{font:30px Georgia,serif;margin-top:0}.close{float:right;border:0;background:none;font-size:24px;cursor:pointer}
+@media(max-width:900px){.links{display:none}.hero{grid-template-columns:1fr}.heroImg{min-height:300px}.steps,.cards,.configGrid,.trust,footer{grid-template-columns:1fr 1fr}.steps{margin-top:20px}.cards .card:last-child{display:none}}
+@media(max-width:600px){h1{font-size:40px}.steps,.cards,.configGrid,.trust,footer{grid-template-columns:1fr}.heroText{padding:50px 7%}.secondary{margin-left:0;margin-top:10px}.heroImg{min-height:240px}}
+</style>
+</head>
+<body>
+<div class="top"><span>🚚 Livrare în toată Moldova</span><span>✦ Calitate premium &nbsp; ♡ Design personalizat</span></div>
+<nav>
+  <div class="logo">AlbumArt<small>ALBUME PERSONALIZATE</small></div>
+  <div class="links"><a href="#acasa">Acasă</a><a href="#modele">Albume</a><a href="#configurator">Cum funcționează</a><a href="#despre">Despre noi</a><a href="#contact">Contact</a></div>
+  <div>☎️ &nbsp; <button class="navbtn cart" onclick="openCart()">🛒<span class="badge" id="badge">0</span></button></div>
+</nav>
+
+<main id="acasa">
+<section class="hero">
+ <div class="heroText">
+  <div class="eyebrow">Amintiri create special pentru tine</div>
+  <h1>Poveștile tale merită <em>mai mult</em></h1>
+  <p>Albume foto personalizate, create pentru amintirile care durează o viață.</p>
+  <button class="btn primary" onclick="document.querySelector('#configurator').scrollIntoView({behavior:'smooth'})">CREEAZĂ ALBUMUL TĂU</button>
+  <a class="btn secondary" href="#modele">VEZI MODELE</a>
+ </div>
+ <div class="heroImg"></div>
+</section>
+
+<div class="steps">
+ <div class="step"><span>🖼️</span><b>Încarcă pozele</b><small>Ușor și rapid</small></div>
+ <div class="step"><span>📖</span><b>Personalizează</b><small>Copertă, text, culoare</small></div>
+ <div class="step"><span>📏</span><b>Alege dimensiunea</b><small>Pagini și format</small></div>
+ <div class="step"><span>💳</span><b>Vezi prețul</b><small>Fără costuri ascunse</small></div>
+ <div class="step"><span>📦</span><b>Primești albumul</b><small>Livrare în Moldova</small></div>
+</div>
+
+<section id="modele">
+ <div class="sectionHead"><h2>Modele de albume</h2><a href="#configurator">Vezi toate modelele →</a></div>
+ <div class="cards">
+  <div class="card"><div class="pic">Classic</div><div class="info"><h3>Classic</h3><p>Elegant și simplu, perfect pentru orice ocazie</p><div class="price">de la 350 MDL</div></div></div>
+  <div class="card"><div class="pic">Piele Eco</div><div class="info"><h3>Piele Eco</h3><p>Rezistentă și premium</p><div class="price">de la 450 MDL</div></div></div>
+  <div class="card"><div class="pic">Catifea</div><div class="info"><h3>Catifea</h3><p>Textură catifelată, atingere luxoasă</p><div class="price">de la 500 MDL</div></div></div>
+  <div class="card"><div class="pic">Acrilic</div><div class="info"><h3>Acrilic</h3><p>Modern și elegant</p><div class="price">de la 550 MDL</div></div></div>
+  <div class="card"><div class="pic">Lemn</div><div class="info"><h3>Lemn</h3><p>Copertă din lemn natural</p><div class="price">de la 600 MDL</div></div></div>
+ </div>
+</section>
+
+<section id="configurator">
+ <div class="sectionHead"><h2>Creează albumul tău</h2><span>Prețul se calculează automat</span></div>
+ <div class="config">
+  <div class="configGrid">
+   <div class="panel">
+    <h3>Personalizare</h3>
+    <label>Model
+      <select id="model" onchange="calc()"><option value="350">Classic — 350 MDL</option><option value="450">Piele Eco — 450 MDL</option><option value="500">Catifea — 500 MDL</option><option value="550">Acrilic — 550 MDL</option><option value="600">Lemn — 600 MDL</option></select>
+    </label>
+    <label>Dimensiune
+      <select id="size" onchange="calc()"><option value="0">30×30 cm</option><option value="80">25×25 cm (+80)</option><option value="120">20×30 cm (+120)</option></select>
+    </label>
+    <label>Număr de pagini
+      <select id="pages" onchange="calc()"><option value="0">20 pagini</option><option value="70">30 pagini (+70)</option><option value="140">40 pagini (+140)</option><option value="230">50 pagini (+230)</option></select>
+    </label>
+    <label>Text pe copertă
+      <input id="coverText" placeholder="Ex: Amintiri de neuitat" oninput="previewText()">
+    </label>
+    <br><button class="btn primary" onclick="addCart()">ADAUGĂ ÎN COȘ</button>
+   </div>
+   <div class="panel">
+    <h3>Previzualizare</h3>
+    <div class="preview"><div class="album" id="albumPreview">Amintiri<br>de neuitat</div></div>
+   </div>
+   <div class="panel">
+    <h3>Rezumat</h3><div>Model: <b id="sumModel">Classic</b></div><br><div>Dimensiune: <b>30×30 cm</b></div><br><div>Pagini: <b id="sumPages">20</b></div><hr><div>Preț total</div><div class="total" id="total">350 MDL</div><button class="btn primary" style="width:100%" onclick="addCart()">COMANDĂ</button>
+   </div>
+  </div>
+ </div>
+ <div class="trust"><div>✦ <b>Calitate premium</b><br><small>Materiale atent selectate</small></div><div>◇ <b>Design unic</b><br><small>Creat special pentru tine</small></div><div>✓ <b>Garanția satisfacției</b><br><small>Verificăm fiecare comandă</small></div><div>♧ <b>Livrare rapidă</b><br><small>În Republica Moldova</small></div></div>
+</section>
+
+<section id="despre"><div class="cta"><h2>Ai o întrebare?</h2><p>Echipa noastră este aici să te ajute.</p><button class="btn primary" onclick="alert('În versiunea finală aici va fi conectat numărul tău.')">☎ SUNĂ ACUM</button> <button class="btn secondary" onclick="alert('În versiunea finală aici va fi conectat WhatsApp.')">◉ SCRIE PE WHATSAPP</button></div></section>
+</main>
+
+<footer id="contact"><div><div class="footerTitle">AlbumArt</div><p>Transformăm amintirile tale în albume personalizate de cea mai înaltă calitate.</p><small>© 2026 AlbumArt. Toate drepturile rezervate.</small></div><div><b>Meniu</b><p>Acasă</p><p>Albume</p><p>Cum funcționează</p><p>Despre noi</p></div><div><b>Informații utile</b><p>Livrare și plată</p><p>Termeni și condiții</p><p>Politica de retur</p><p>Întrebări frecvente</p></div><div><b>Urmărește-ne</b><p>Facebook · Instagram · TikTok</p><p>Chișinău, Moldova</p></div></footer>
+
+<div class="modal" id="modal"><div class="modalBox"><button class="close" onclick="closeCart()">×</button><h2>Coșul tău</h2><p id="cartText">Coșul este gol.</p><button class="btn primary" onclick="alert('În versiunea finală aici va fi formularul de comandă.')">FINALIZEAZĂ COMANDA</button></div></div>
+<script>
+let cart=0;
+function calc(){let m=document.getElementById('model'),s=document.getElementById('size'),p=document.getElementById('pages');let total=+m.value + +s.value + +p.value;document.getElementById('total').textContent=total+' MDL';document.getElementById('sumModel').textContent=m.options[m.selectedIndex].text.split(' —')[0];document.getElementById('sumPages').textContent=p.options[p.selectedIndex].text.split(' ')[0]}
+function previewText(){let t=document.getElementById('coverText').value.trim();document.getElementById('albumPreview').innerHTML=t?t.replace(/\n/g,'<br>'):'Amintiri<br>de neuitat'}
+function addCart(){cart++;document.getElementById('badge').textContent=cart;document.getElementById('cartText').textContent='Ai '+cart+' album(e) în coș. Preț curent: '+document.getElementById('total').textContent+'.';openCart()}
+function openCart(){document.getElementById('modal').style.display='flex';document.getElementById('cartText').textContent=cart?'Ai '+cart+' album(e) în coș. Preț curent: '+document.getElementById('total').textContent+'.':'Coșul este gol.'}
+function closeCart(){document.getElementById('modal').style.display='none'}
+calc()
+</script>
+</body></html>
